@@ -1,0 +1,28 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar{
+  span{
+    font-size: 20px;
+    font-weight: 350;
+  }
+}
+
+ul {
+  li {
+    padding: 10px 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+    &:hover {
+      background-color: var(--secondary);
+    }
+    transition: background-color 0.4s;
+  }
+}
+
+.vl {
+  border-left: 1px solid ;
+  height: 30px;
+}

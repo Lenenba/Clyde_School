@@ -1,0 +1,16 @@
+mat-list {
+  div{
+    color: white;
+  };
+  mat-icon{
+    color: white;
+  };
+  mat-list-item{
+    margin-bottom: 5px;
+    &:hover{
+      background-color: var(--secondary);
+      cursor: pointer;
+    };
+    transition:  background-color 0.4s;
+  }
+}

@@ -1,0 +1,10 @@
+<div class="md:container md:mx-auto px-4 m-8">
+  <div class="w-3/5 content-center">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="mt-5">
+    <app-student-list
+      [student] = "student$ | async"
+      [schoolParent] = "schoolParent$ | async"></app-student-list>
+  </div>
+</div>

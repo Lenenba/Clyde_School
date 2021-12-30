@@ -1,0 +1,153 @@
+<div class="d-flex d-flex-c">
+  <div>
+    <mat-card class="">
+      <mat-card-title>Students Form </mat-card-title>
+      <mat-card-subtitle>Students</mat-card-subtitle>
+      <mat-card-content>
+        <br>
+        <form [formGroup]="studentForm" (submit)="createdStudents()" >
+          <table>
+            <tr>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Fisrt Name</mat-label>
+                  <input matInput type="text" formControlName="first_name">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput type="text" formControlName="last_name">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div *ngIf="(studentForm.get('first_name')?.errors && studentForm.get('first_name')?.touched)">
+                  <span class="errors" *ngIf="studentForm.get('first_name')?.errors!['required']" >First Name is required</span>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="studentForm.get('last_name')?.errors && studentForm.get('last_name')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('last_name')?.errors!['required']" >Last Name is required</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Birthday</mat-label>
+                  <input matInput type="date" formControlName="date_naissance">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>E-mail</mat-label>
+                  <input matInput type="email" formControlName="email">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div *ngIf="studentForm.get('date_naissance')?.errors && studentForm.get('date_naissance')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('date_naissance')?.errors!['required']" >Date is required</span>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="(studentForm.get('email')?.errors && studentForm.get('email')?.touched) || studentForm.get('email')?.dirty">
+                  <span class="errors" *ngIf="studentForm.get('email')?.errors!['required']" >email is required</span>
+                  <span class="errors" *ngIf="studentForm.get('email')?.errors!['email']" >your email is incorrect</span>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Parent Name</mat-label>
+                  <mat-select formControlName="school_parent_id">
+                    <mat-option *ngFor="let parentsList of parentsList$ " [value]="parentsList.id">{{parentsList.first_name}} {{parentsList.last_name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div *ngIf="studentForm.get('school_parent_id')?.errors && studentForm.get('school_parent_id')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('school_parent_id')?.errors!['required']" >You have to choose a Parent Name</span>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Address</mat-label>
+                  <input matInput type="text" formControlName="adresse">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div *ngIf="studentForm.get('adresse')?.errors && studentForm.get('adresse')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('adresse')?.errors!['required']" >address is required</span>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Country</mat-label>
+                  <input matInput type="text" formControlName="pays">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>City</mat-label>
+                  <input matInput type="text" formControlName="ville">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="fill">
+                  <mat-label>Phone</mat-label>
+                  <input matInput type="text" formControlName="phone">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div *ngIf="studentForm.get('pays')?.errors && studentForm.get('pays')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('pays')?.errors!['required']" >Pays is required</span>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="studentForm.get('ville')?.errors && studentForm.get('ville')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('ville')?.errors!['required']" >City is required</span>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="studentForm.get('phone')?.errors && studentForm.get('phone')?.touched">
+                  <span class="errors" *ngIf="studentForm.get('phone')?.errors!['required']" >Phone is required</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="ml-10">
+                <input #img hidden="true" type="file" onclick="this.value=null"  accept=".jpg"/>
+                <button mat-raised-button type="button" color="primary" (click)="img.click()">Upload image</button>
+              </td>
+            </tr>
+          </table>
+          <br><br>
+          <button mat-raised-button [disabled]="studentForm.invalid" type="submit" color="primary">Save</button>
+          <button mat-raised-button type="button"> Cancel</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

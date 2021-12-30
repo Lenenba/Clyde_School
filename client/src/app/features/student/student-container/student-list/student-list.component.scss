@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+mat-list-item{
+  &:hover{
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+  }
+  transition: background-color 0.4s;
+}
